@@ -24,6 +24,17 @@
 ### Results
 The initial scan identified multiple reachable services. This establishes the current service inventory but does not, by itself, confirm exploitable vulnerabilities.
 
+### WebDAV Reconnaissance Finding
+- Target: 10.10.10.10:80/dav/
+- Service: Apache/2.2.8 (Ubuntu), DAV/2
+- Test: Sent an HTTP OPTIONS request to identify advertised methods.
+- Result: The server advertised DELETE, TRACE, PROPFIND, PROPPATCH, COPY, MOVE, LOCK, and UNLOCK among its allowed methods.
+- Verification: A PROPFIND request returned HTTP 207 Multi-Status. The response described the /dav/ collection but did not list files or subdirectories.
+- Directory listing: A GET request returned HTTP 200 and displayed an "Index of /dav" page. Only the Parent Directory entry appeared.
+- Assessment: WebDAV methods and directory indexing are enabled. Further review of access controls is required; unauthorized modification or deletion has not been demonstrated.
+- Evidence: evidence/webdav-propfind.txt; evidence/webdav-directory.html; evidence/webdav-get-headers.txt
+- Limitations: No files were created, modified, or deleted during these checks.
+
 ### FTP Anonymous Access Finding
 - Target: 10.10.10.10:21
 - Service: vsftpd 2.3.4
