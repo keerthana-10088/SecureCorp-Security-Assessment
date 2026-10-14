@@ -17,12 +17,21 @@
 |---|---|---|---|
 | T01 | Initial Nmap service/version scan | Completed | Week-1-Lab-Setup/nmap-scan.txt |
 | T02 | Review discovered services | Completed | application-map.md |
-| T03 | Further authorized service assessment | Pending | To be recorded |
+| T03 | FTP anonymous access verification | Completed | metasploitable-scan.txt; manual FTP session |
 | T04 | Web application security assessment | Pending | To be recorded |
 | T05 | Review relevant security logs | Pending | To be recorded |
 
 ### Results
 The initial scan identified multiple reachable services. This establishes the current service inventory but does not, by itself, confirm exploitable vulnerabilities.
+
+### FTP Anonymous Access Finding
+- Target: 10.10.10.10:21
+- Service: vsftpd 2.3.4
+- Test: Connected using the FTP username `anonymous`.
+- Result: Server returned `230 Login successful`.
+- Directory listing: The `ls` command completed, but no filenames were displayed.
+- Assessment: Anonymous FTP access is confirmed. The contents accessible through this session were not established.
+- Limitations: No files were downloaded, modified, or deleted.
 
 ### Evidence Recording
 For each future test, record:
@@ -37,4 +46,4 @@ For each future test, record:
 No exploitation result or successful shell access is claimed in this log.
 
 ### Overall Status
-Initial reconnaissance completed. Further testing is pending.
+Initial reconnaissance and anonymous FTP access verification completed. Web application security assessment and log review are pending.
