@@ -44,3 +44,42 @@ The initial Nmap service scan identified the following services:
 
 ### Status
 Initial service mapping completed. Further authorized testing is pending.
+
+
+### Additional Web Application Observations
+
+#### HTTP Service
+- URL: http://10.10.10.10/
+- HTTP response: `200 OK`
+- Server header: Apache/2.2.8 (Ubuntu) DAV/2
+- PHP header: PHP/5.2.4-2ubuntu5.10
+- Assessment: Detected software versions are old and warrant further security review. Version headers alone do not prove exploitability.
+
+#### Available Web Application Paths
+The homepage HTML listed these paths:
+- `/twiki/`
+- `/phpMyAdmin/`
+- `/mutillidae/`
+- `/dvwa/`
+- `/dav/`
+
+These paths were observed in the homepage HTML. Their security has not yet been fully assessed.
+
+#### DVWA Login Page
+- Path: `/dvwa/`
+- Initial response: `302 Found`
+- Redirect destination: `login.php`
+- Login page title: Damn Vulnerable Web App (DVWA) - Login
+- Form method: `POST`
+- Form action: `login.php`
+- Observed form fields: `username` and `password`
+- Result: The login page is accessible and its form structure was identified.
+- Limitation: No authentication bypass or other login vulnerability has been confirmed.
+
+### Updated Evidence
+- Nmap scan: `metasploitable-scan.txt`
+- FTP access observation: Manual FTP session recorded in `attack-log.md`
+- HTTP headers and DVWA page: Observed using `curl` from Kali Linux
+
+### Updated Status
+Initial service mapping, anonymous FTP access verification, and basic web application reconnaissance completed. Further web application security assessment and log review remain pending.
