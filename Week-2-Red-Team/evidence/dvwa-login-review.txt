@@ -1,0 +1,21 @@
+SecureCorp Security Assessment - DVWA Review
+Target: 10.10.10.10
+Date observed: 2026-10-15
+
+Observations:
+- /dvwa/ returned HTTP 302 and redirected to login.php.
+- /dvwa/login.php returned HTTP 200.
+- Login form uses POST with username and password fields.
+- Server identified itself as Apache/2.2.8 (Ubuntu) DAV/2.
+- X-Powered-By reported PHP/5.2.4-2ubuntu5.10.
+- Response did not show common headers such as X-Frame-Options,
+  X-Content-Type-Options, or Content-Security-Policy.
+- PHPSESSID cookie was observed without Secure, HttpOnly, or
+  SameSite attributes in the captured response.
+
+Assessment:
+These are preliminary configuration observations requiring validation.
+The old server/PHP versions and missing response headers merit review.
+No credentials were submitted, no authentication bypass was attempted,
+and no exploit or unauthorized access was demonstrated.
+Evidence was recorded from curl responses during this review.

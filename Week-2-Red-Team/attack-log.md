@@ -18,7 +18,7 @@
 | T01 | Initial Nmap service/version scan | Completed | Week-1-Lab-Setup/nmap-scan.txt |
 | T02 | Review discovered services | Completed | application-map.md |
 | T03 | FTP anonymous access verification | Completed | metasploitable-scan.txt; manual FTP session |
-| T04 | Web application security assessment | Pending | To be recorded |
+| T04 | Non-invasive web application review | Completed (limited) | application-map.md; evidence/webdav-propfind.txt; evidence/webdav-directory.html; evidence/dvwa-login-review.txt |
 | T05 | Review relevant security logs | Pending | To be recorded |
 
 ### Results
@@ -34,6 +34,16 @@ The initial scan identified multiple reachable services. This establishes the cu
 - Assessment: WebDAV methods and directory indexing are enabled. Further review of access controls is required; unauthorized modification or deletion has not been demonstrated.
 - Evidence: evidence/webdav-propfind.txt; evidence/webdav-directory.html; evidence/webdav-get-headers.txt
 - Limitations: No files were created, modified, or deleted during these checks.
+
+### DVWA Login Page Review
+- Target: 10.10.10.10:80/dvwa/
+- Result: `/dvwa/` returned HTTP 302 and redirected to `login.php`; the login page returned HTTP 200.
+- Form: POST to `login.php`, with `username` and `password` fields.
+- Server disclosure: Apache/2.2.8 (Ubuntu) and PHP/5.2.4-2ubuntu5.10 were reported.
+- Headers/cookies: Common browser security headers were not present in the captured response. The PHPSESSID cookie did not show Secure, HttpOnly, or SameSite attributes.
+- Assessment: These observations warrant configuration review but do not independently prove exploitability.
+- Evidence: `evidence/dvwa-login-review.txt`
+- Limitations: No credentials were submitted; no bypass or exploitation was attempted.
 
 ### FTP Anonymous Access Finding
 - Target: 10.10.10.10:21
@@ -57,4 +67,4 @@ For each future test, record:
 No exploitation result or successful shell access is claimed in this log.
 
 ### Overall Status
-Initial reconnaissance and anonymous FTP access verification completed. Web application security assessment and log review are pending.
+Initial reconnaissance, FTP verification, and limited non-invasive web application review completed. Security log review remains pending.
