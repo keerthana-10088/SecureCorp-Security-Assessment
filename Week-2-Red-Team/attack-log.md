@@ -77,3 +77,11 @@ Initial reconnaissance, FTP verification, and limited non-invasive web applicati
 - Assessment: Review the web server configuration and determine whether appropriate security headers should be enabled. This single response does not establish that the headers are absent across the entire application.
 - Evidence: evidence/http-headers.txt
 - Limitations: This was a read-only review; no configuration changes were made.
+
+### Security Log Review
+- Target: Metasploitable2 (10.10.10.10)
+- Test: Read-only review of /var/log/syslog and /var/log/auth.log.
+- Result: System logs contained DHCP/network messages, scheduled CRON session events, and kernel resume-from-disk errors.
+- Authentication review: No matching failed-login patterns were returned by the commands used.
+- Assessment: No suspicious login activity was confirmed from the limited log entries reviewed. This does not prove that failed login attempts never occurred.
+- Limitations: Only selected log files and recent entries were reviewed. No log files were modified.
