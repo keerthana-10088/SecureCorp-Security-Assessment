@@ -6,7 +6,7 @@ Track evidence collected during authorized security testing.
 | Evidence ID | Description | File | Status |
 |---|---|---|---|
 | E01 | Initial Nmap service/version scan | ../../Week-1-Lab-Setup/nmap-scan.txt | Available |
-| E02 | Additional service assessment | Not collected yet | Pending |
+| E02 | Metasploitable2 Nmap service scan | metasploitable-service-scan.txt | Available |
 | E03 | Web application assessment | Not collected yet | Pending |
 | E04 | Security testing screenshots | Not collected yet | Pending |
 
@@ -17,4 +17,4 @@ Track evidence collected during authorized security testing.
 - Remove passwords, tokens, and other sensitive information from screenshots before sharing.
 
 ## Current Status
-Initial scan evidence is available. Additional evidence will be added after testing.
+Initial Nmap and Metasploitable2 service scan evidence are available. Web application assessment and screenshots are pending.
