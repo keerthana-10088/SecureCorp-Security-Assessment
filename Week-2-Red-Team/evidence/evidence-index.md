@@ -9,6 +9,7 @@ Track evidence collected during authorized security testing.
 | E02 | Metasploitable2 Nmap service scan | metasploitable-service-scan.txt | Available |
 | E03 | Web application assessment | Not collected yet | Pending |
 | E04 | Security testing screenshots | Not collected yet | Pending |
+| E05 | HTTP response headers | http-headers.txt | Available |
 
 ## Evidence Rules
 - Record genuine test results only.
