@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SecureCorp | Security Assessment</title>
+
+<style>
+:root {
+    --bg: #0b1120;
+    --panel: #111a2e;
+    --border: #26334b;
+    --text: #edf2ff;
+    --muted: #93a4c3;
+    --accent: #63e6be;
+    --blue: #75a7ff;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 24px; }
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+}
+.layout { display: flex; min-height: 100vh; }
+.sidebar {
+    width: 245px;
+    flex-shrink: 0;
+    padding: 28px 18px;
+    background: #0e1729;
+    border-right: 1px solid var(--border);
+}
+.brand { font-size: 23px; font-weight: 800; }
+.brand span { color: var(--accent); }
+.subtitle { color: var(--muted); font-size: 12px; margin-bottom: 32px; }
+.nav-label {
+    color: #7385a5; font-size: 11px; font-weight: bold;
+    letter-spacing: 1.5px; margin: 20px 10px 10px;
+}
+.nav-item {
+    display: block; padding: 11px 12px; margin: 5px 0;
+    color: #aab8d1; text-decoration: none;
+    border-radius: 8px; font-size: 14px;
+}
+.nav-item.active, .nav-item:hover {
+    background: #1c2c43; color: var(--accent);
+}
+.sidebar-note {
+    margin-top: 35px; padding: 14px;
+    border: 1px solid var(--border); border-radius: 10px;
+    font-size: 12px; color: var(--muted);
+}
+.sidebar-note strong { display: block; color: var(--accent); margin-bottom: 5px; }
+main { flex: 1; min-width: 0; padding: 32px; }
+.topbar {
+    display: flex; justify-content: space-between;
+    align-items: center; gap: 18px; margin-bottom: 28px;
+}
+.eyebrow {
+    color: var(--accent); text-transform: uppercase;
+    font-size: 11px; font-weight: bold; letter-spacing: 2px;
+}
+h1 { font-size: clamp(25px, 4vw, 34px); margin: 5px 0; }
+.description { color: var(--muted); font-size: 14px; }
+.status {
+    border: 1px solid #365c56; color: var(--accent);
+    background: #102b2a; border-radius: 30px;
+    padding: 8px 13px; font-size: 12px; white-space: nowrap;
+}
+.hero {
+    background: linear-gradient(120deg, #172a3d, #142035 65%, #152d31);
+    border: 1px solid #30445b; border-radius: 16px;
+    padding: 28px; margin-bottom: 26px;
+}
+.hero h2 { font-size: 23px; margin: 8px 0; }
+.hero p { color: #b7c5dc; font-size: 14px; max-width: 720px; }
+.hero-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+.tag {
+    border: 1px solid #40536b; background: #15283b;
+    padding: 6px 10px; border-radius: 6px;
+    font-size: 12px; color: #d6e3f8;
+}
+.section-heading {
+    display: flex; justify-content: space-between;
+    align-items: center; flex-wrap: wrap; gap: 12px;
+    margin: 28px 0 16px;
+}
+.section-heading h2 { font-size: 19px; }
+.section-heading > span { color: var(--muted); font-size: 12px; }
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 16px; }
+.card {
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: 12px; padding: 20px; min-width: 0;
+}
+.card-label { color: var(--muted); font-size: 12px; }
+.card-number { font-size: 29px; font-weight: 800; margin: 8px 0 2px; }
+.card-foot { color: #8092b1; font-size: 11px; }
+.green { color: var(--accent); }
+.blue { color: var(--blue); }
+.orange { color: #ffca80; }
+.findings { display: grid; grid-template-columns: minmax(0,1.5fr) minmax(240px,1fr); gap: 18px; }
+.finding {
+    display: flex; justify-content: space-between;
+    align-items: flex-start; gap: 14px;
+    padding: 17px 0; border-bottom: 1px solid var(--border);
+}
+.finding:last-child { border-bottom: none; padding-bottom: 0; }
+.finding h3 { font-size: 14px; margin-bottom: 4px; }
+.finding p { font-size: 12px; color: var(--muted); }
+.badge { font-size: 10px; padding: 5px 8px; border-radius: 5px; font-weight: bold; white-space: nowrap; }
+.medium { background: #3b2c1c; color: #ffca80; }
+.low { background: #1b3046; color: #8fc5ff; }
+.pending { background: #342746; color: #d8b4fe; }
+.info-row {
+    display: flex; justify-content: space-between; gap: 12px;
+    padding: 11px 0; border-bottom: 1px solid var(--border); font-size: 13px;
+}
+.info-row:last-child { border-bottom: none; }
+.info-row span:first-child { color: var(--muted); }
+.info-row span:last-child { text-align: right; overflow-wrap: anywhere; }
+.search-box {
+    width: 100%; max-width: 320px; padding: 10px 12px;
+    background: var(--panel); color: var(--text);
+    border: 1px solid var(--border); border-radius: 8px;
+    font-size: 13px;
+}
+.search-box:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
+.search-count { color: var(--muted); font-size: 12px; margin: 8px 0; }
+.priority { margin-bottom: 16px; }
+.priority:last-child { margin-bottom: 0; }
+.priority-title { display: flex; justify-content: space-between; gap: 10px; font-size: 12px; margin-bottom: 7px; }
+.priority-title span:last-child { color: var(--muted); }
+.progress { height: 6px; border-radius: 10px; background: #26334b; overflow: hidden; }
+.progress div { height: 100%; border-radius: 10px; background: var(--accent); }
+.notice {
+    margin-top: 22px; padding: 17px; border: 1px solid #59482b;
+    background: #211d17; border-radius: 10px; color: #e8d4a8; font-size: 13px;
+}
+.notice strong { display: block; margin-bottom: 4px; }
+footer { color: #72829f; font-size: 11px; text-align: center; padding: 28px 0 5px; }
+.no-results { display: none; color: var(--muted); padding: 20px 0; font-size: 13px; }
+
+@media (max-width: 1100px) {
+    .stats { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    .findings { grid-template-columns: 1fr; }
+}
+@media (max-width: 700px) {
+    .layout { display: block; }
+    .sidebar { width: 100%; padding: 18px; border-right: none; border-bottom: 1px solid var(--border); }
+    .subtitle { margin-bottom: 15px; }
+    .nav-label, .sidebar-note { display: none; }
+    .sidebar nav { display: flex; flex-wrap: wrap; gap: 5px; }
+    .nav-item { margin: 0; padding: 8px 10px; }
+    main { padding: 20px 15px; }
+    .topbar { align-items: flex-start; flex-direction: column; }
+    .hero { padding: 21px; }
+    .stats { gap: 10px; }
+    .card { padding: 15px; }
+    .card-number { font-size: 25px; }
+}
+@media (max-width: 380px) {
+    .stats { grid-template-columns: 1fr; }
+    .finding { flex-direction: column; }
+}
+</style>
+</head>
+
+<body>
+<div class="layout">
+
+<aside class="sidebar">
+    <div class="brand">Secure<span>Corp</span></div>
+    <div class="subtitle">Security Assessment Platform</div>
+
+    <div class="nav-label">WORKSPACE</div>
+    <nav>
+        <a class="nav-item active" href="#overview">▦ &nbsp; Overview</a>
+        <a class="nav-item" href="#findings">⌕ &nbsp; Findings</a>
+        <a class="nav-item" href="#environment">▣ &nbsp; Lab Environment</a>
+        <a class="nav-item" href="#remediation">✓ &nbsp; Remediation</a>
+        <a class="nav-item" href="#evidence">▤ &nbsp; Evidence</a>
+    </nav>
+
+    <div class="sidebar-note">
+        <strong>● Lab Mode</strong>
+        Educational security assessment in an isolated VirtualBox network.
+    </div>
+</aside>
+
+<main>
+<header class="topbar" id="overview">
+    <div>
+        <div class="eyebrow">Security Operations / Overview</div>
+        <h1>Assessment Dashboard</h1>
+        <p class="description">SecureCorp infrastructure security review and assessment summary.</p>
+    </div>
+    <div class="status">● Report Documented</div>
+</header>
+
+<section class="hero">
+    <div class="eyebrow">SECURITY ASSESSMENT · 2026</div>
+    <h2>Understand risks. Strengthen security.</h2>
+    <p>A documented review covering service discovery, HTTP security observations, WebDAV exposure, authentication logs, and centralized logging investigation.</p>
+    <div class="hero-tags">
+        <span class="tag">Network Reconnaissance</span>
+        <span class="tag">Web Security</span>
+        <span class="tag">Blue Team Monitoring</span>
+        <span class="tag">Risk Assessment</span>
+    </div>
+</section>
+
+<div class="section-heading">
+    <h2>Assessment Overview</h2>
+    <span>Documented project summary</span>
+</div>
+
+<section class="stats">
+    <article class="card">
+        <div class="card-label">Lab Systems</div>
+        <div class="card-number blue">02</div>
+        <div class="card-foot">Kali Linux + Metasploitable2</div>
+    </article>
+    <article class="card">
+        <div class="card-label">Review Areas</div>
+        <div class="card-number green">04</div>
+        <div class="card-foot">Network, web, logs, remediation</div>
+    </article>
+    <article class="card">
+        <div class="card-label">Documented Findings</div>
+        <div class="card-number orange">04</div>
+        <div class="card-foot">Preliminary observations</div>
+    </article>
+    <article class="card">
+        <div class="card-label">Validation</div>
+        <div class="card-number">Open</div>
+        <div class="card-foot">Some technical checks remain pending</div>
+    </article>
+</section>
+
+<div class="section-heading" id="findings">
+    <h2>Security Findings</h2>
+    <span>Preliminary risk classifications</span>
+    <input class="search-box" type="search" id="findingSearch" placeholder="Search findings..." aria-label="Search security findings">
+</div>
+<p class="search-count" id="searchCount" aria-live="polite">Showing all 4 findings</p>
+
+<section class="findings" id="findingsList">
+    <article class="card">
+        <div class="finding">
+            <div>
+                <h3>Legacy Software Version Disclosure</h3>
+                <p>Older Apache and PHP versions were identified in HTTP evidence. Patch status requires validation.</p>
+            </div>
+            <span class="badge medium">MEDIUM*</span>
+        </div>
+        <div class="finding">
+            <div>
+                <h3>HTTP Server Information Disclosure</h3>
+                <p>Server response headers disclose implementation details.</p>
+            </div>
+            <span class="badge low">LOW*</span>
+        </div>
+        <div class="finding">
+            <div>
+                <h3>WebDAV Exposure Review</h3>
+                <p>WebDAV methods and responses were inspected. Write access and impact require verification.</p>
+            </div>
+            <span class="badge pending">VALIDATION</span>
+        </div>
+        <div class="finding">
+            <div>
+                <h3>Centralized Log Forwarding</h3>
+                <p>Remote syslog delivery and storage were not confirmed.</p>
+            </div>
+            <span class="badge pending">PENDING</span>
+        </div>
+        <p class="no-results" id="noResults">No matching findings. Try another keyword.</p>
+    </article>
+
+    <article class="card" id="environment">
+        <h2 style="font-size:16px; margin-bottom:12px;">Lab Environment</h2>
+        <div class="info-row"><span>Attacker VM</span><span>Kali Linux</span></div>
+        <div class="info-row"><span>Kali IP</span><span>10.10.10.5</span></div>
+        <div class="info-row"><span>Target VM</span><span>Metasploitable2</span></div>
+        <div class="info-row"><span>Target IP</span><span>10.10.10.10</span></div>
+        <div class="info-row"><span>Network</span><span>VirtualBox Internal</span></div>
+        <div class="info-row"><span>Scope</span><span>Educational lab only</span></div>
+    </article>
+</section>
+
+<div class="section-heading" id="remediation">
+    <h2>Recommended Priorities</h2>
+    <span>Suggested remediation order</span>
+</div>
+
+<section class="card">
+    <div class="priority">
+        <div class="priority-title"><span>01 · Review and update legacy software</span><span>High priority</span></div>
+        <div class="progress"><div style="width:90%"></div></div>
+    </div>
+    <div class="priority">
+        <div class="priority-title"><span>02 · Verify WebDAV permissions and access</span><span>High priority</span></div>
+        <div class="progress"><div style="width:80%"></div></div>
+    </div>
+    <div class="priority">
+        <div class="priority-title"><span>03 · Confirm centralized logging delivery</span><span>Medium priority</span></div>
+        <div class="progress"><div style="width:65%"></div></div>
+    </div>
+    <div class="priority">
+        <div class="priority-title"><span>04 · Reduce unnecessary server disclosure</span><span>Medium priority</span></div>
+        <div class="progress"><div style="width:45%"></div></div>
+    </div>
+</section>
+
+<div class="section-heading" id="evidence">
+    <h2>Evidence &amp; Documentation</h2>
+    <span>Repository records</span>
+</div>
+
+<section class="findings">
+    <article class="card">
+        <h2 style="font-size:16px; margin-bottom:10px;">Evidence Categories</h2>
+        <div class="info-row"><span>Week 1</span><span>Lab setup and reconnaissance</span></div>
+        <div class="info-row"><span>Week 2</span><span>Service and HTTP evidence</span></div>
+        <div class="info-row"><span>Week 3</span><span>Authentication log review</span></div>
+        <div class="info-row"><span>Week 4</span><span>Final assessment report</span></div>
+    </article>
+    <article class="card">
+        <h2 style="font-size:16px; margin-bottom:10px;">Project Status</h2>
+        <p style="color:var(--muted); font-size:13px;">Documentation and evidence references are organized in the project repository. Findings are preliminary, and additional validation and remediation verification are recommended.</p>
+        <div style="margin-top:15px;"><span class="badge pending">ASSESSMENT IN PROGRESS</span></div>
+    </article>
+</section>
+
+<div class="notice">
+    <strong>⚠ Assessment Limitation</strong>
+    This dashboard summarizes a controlled educational lab. It is not proof of a successful exploit or a complete penetration test. Technical validation items remain open as documented in the final report.
+</div>
+
+<footer>SecureCorp Security Assessment · Educational Lab Project · 2026</footer>
+</main>
+</div>
+
+<script>
+const navLinks = document.querySelectorAll('.nav-item');
+
+navLinks.forEach(link => {
+    link.addEventListener('click', function () {
+        navLinks.forEach(item => item.classList.remove('active'));
+        this.classList.add('active');
+    });
+});
+
+const searchInput = document.getElementById('findingSearch');
+const findingCards = document.querySelectorAll('#findingsList > article:first-child .finding');
+const searchCount = document.getElementById('searchCount');
+const noResults = document.getElementById('noResults');
+
+searchInput.addEventListener('input', function () {
+    const query = this.value.trim().toLowerCase();
+    let visible = 0;
+
+    findingCards.forEach(finding => {
+        const matches = finding.textContent.toLowerCase().includes(query);
+        finding.style.display = matches ? 'flex' : 'none';
+        if (matches) visible++;
+    });
+
+    searchCount.textContent = `Showing ${visible} of ${findingCards.length} findings`;
+    noResults.style.display = visible === 0 ? 'block' : 'none';
+});
+</script>
+</body>
+</html>
