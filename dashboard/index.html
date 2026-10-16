@@ -3,373 +3,903 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>SecureCorp | Security Assessment</title>
 
 <style>
 :root {
     --bg: #0b1120;
-    --panel: #111a2e;
-    --border: #26334b;
-    --text: #edf2ff;
-    --muted: #93a4c3;
-    --accent: #63e6be;
-    --blue: #75a7ff;
+    --panel: #111b2e;
+    --card: #17243a;
+    --border: #293a52;
+    --text: #e8eef8;
+    --muted: #9aabc2;
+    --accent: #60a5fa;
+    --green: #34d399;
+    --yellow: #fbbf24;
+    --red: #fb7185;
 }
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; scroll-padding-top: 24px; }
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     background: var(--bg);
     color: var(--text);
-    line-height: 1.6;
+    line-height: 1.65;
 }
-.layout { display: flex; min-height: 100vh; }
-.sidebar {
-    width: 245px;
-    flex-shrink: 0;
-    padding: 28px 18px;
-    background: #0e1729;
-    border-right: 1px solid var(--border);
+
+a {
+    color: var(--accent);
+    text-decoration: none;
 }
-.brand { font-size: 23px; font-weight: 800; }
-.brand span { color: var(--accent); }
-.subtitle { color: var(--muted); font-size: 12px; margin-bottom: 32px; }
-.nav-label {
-    color: #7385a5; font-size: 11px; font-weight: bold;
-    letter-spacing: 1.5px; margin: 20px 10px 10px;
+
+a:hover {
+    text-decoration: underline;
 }
-.nav-item {
-    display: block; padding: 11px 12px; margin: 5px 0;
-    color: #aab8d1; text-decoration: none;
-    border-radius: 8px; font-size: 14px;
+
+header {
+    background: #101a2b;
+    border-bottom: 1px solid var(--border);
+    padding: 24px 6%;
 }
-.nav-item.active, .nav-item:hover {
-    background: #1c2c43; color: var(--accent);
+
+.header-inner {
+    max-width: 1250px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
 }
-.sidebar-note {
-    margin-top: 35px; padding: 14px;
-    border: 1px solid var(--border); border-radius: 10px;
-    font-size: 12px; color: var(--muted);
+
+.brand {
+    font-size: 23px;
+    font-weight: 800;
 }
-.sidebar-note strong { display: block; color: var(--accent); margin-bottom: 5px; }
-main { flex: 1; min-width: 0; padding: 32px; }
-.topbar {
-    display: flex; justify-content: space-between;
-    align-items: center; gap: 18px; margin-bottom: 28px;
+
+.brand span {
+    color: var(--accent);
 }
-.eyebrow {
-    color: var(--accent); text-transform: uppercase;
-    font-size: 11px; font-weight: bold; letter-spacing: 2px;
+
+.badge {
+    display: inline-block;
+    background: #163b34;
+    color: var(--green);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
 }
-h1 { font-size: clamp(25px, 4vw, 34px); margin: 5px 0; }
-.description { color: var(--muted); font-size: 14px; }
-.status {
-    border: 1px solid #365c56; color: var(--accent);
-    background: #102b2a; border-radius: 30px;
-    padding: 8px 13px; font-size: 12px; white-space: nowrap;
+
+nav {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    max-width: 1250px;
+    margin-left: auto;
+    margin-right: auto;
 }
+
+nav a {
+    color: var(--muted);
+    padding: 8px 12px;
+    border-radius: 7px;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: white;
+    background: var(--card);
+    text-decoration: none;
+}
+
+main {
+    max-width: 1250px;
+    margin: auto;
+    padding: 35px 22px 60px;
+}
+
 .hero {
-    background: linear-gradient(120deg, #172a3d, #142035 65%, #152d31);
-    border: 1px solid #30445b; border-radius: 16px;
-    padding: 28px; margin-bottom: 26px;
+    padding: 35px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background: linear-gradient(135deg, #142640, #111b2e);
+    margin-bottom: 28px;
 }
-.hero h2 { font-size: 23px; margin: 8px 0; }
-.hero p { color: #b7c5dc; font-size: 14px; max-width: 720px; }
-.hero-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
-.tag {
-    border: 1px solid #40536b; background: #15283b;
-    padding: 6px 10px; border-radius: 6px;
-    font-size: 12px; color: #d6e3f8;
+
+.eyebrow {
+    color: var(--accent);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 12px;
 }
-.section-heading {
-    display: flex; justify-content: space-between;
-    align-items: center; flex-wrap: wrap; gap: 12px;
-    margin: 28px 0 16px;
+
+h1 {
+    font-size: clamp(28px, 5vw, 43px);
+    line-height: 1.2;
+    margin: 12px 0;
 }
-.section-heading h2 { font-size: 19px; }
-.section-heading > span { color: var(--muted); font-size: 12px; }
-.stats { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 16px; }
+
+h2 {
+    font-size: 23px;
+    margin-bottom: 16px;
+}
+
+h3 {
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+
+p {
+    color: var(--muted);
+    margin-bottom: 12px;
+}
+
+.hero p {
+    max-width: 750px;
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 22px;
+}
+
+.button {
+    display: inline-block;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--text);
+    padding: 11px 16px;
+    border-radius: 9px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.button.primary {
+    background: var(--accent);
+    color: #071426;
+    border-color: var(--accent);
+    font-weight: bold;
+}
+
+.button:hover {
+    opacity: 0.88;
+    text-decoration: none;
+}
+
+.section {
+    margin-top: 42px;
+    scroll-margin-top: 20px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 17px;
+}
+
 .card {
-    background: var(--panel); border: 1px solid var(--border);
-    border-radius: 12px; padding: 20px; min-width: 0;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px;
+    min-width: 0;
 }
-.card-label { color: var(--muted); font-size: 12px; }
-.card-number { font-size: 29px; font-weight: 800; margin: 8px 0 2px; }
-.card-foot { color: #8092b1; font-size: 11px; }
-.green { color: var(--accent); }
-.blue { color: var(--blue); }
-.orange { color: #ffca80; }
-.findings { display: grid; grid-template-columns: minmax(0,1.5fr) minmax(240px,1fr); gap: 18px; }
-.finding {
-    display: flex; justify-content: space-between;
-    align-items: flex-start; gap: 14px;
-    padding: 17px 0; border-bottom: 1px solid var(--border);
+
+.stat {
+    font-size: 29px;
+    font-weight: 800;
+    margin: 8px 0;
 }
-.finding:last-child { border-bottom: none; padding-bottom: 0; }
-.finding h3 { font-size: 14px; margin-bottom: 4px; }
-.finding p { font-size: 12px; color: var(--muted); }
-.badge { font-size: 10px; padding: 5px 8px; border-radius: 5px; font-weight: bold; white-space: nowrap; }
-.medium { background: #3b2c1c; color: #ffca80; }
-.low { background: #1b3046; color: #8fc5ff; }
-.pending { background: #342746; color: #d8b4fe; }
-.info-row {
-    display: flex; justify-content: space-between; gap: 12px;
-    padding: 11px 0; border-bottom: 1px solid var(--border); font-size: 13px;
-}
-.info-row:last-child { border-bottom: none; }
-.info-row span:first-child { color: var(--muted); }
-.info-row span:last-child { text-align: right; overflow-wrap: anywhere; }
-.search-box {
-    width: 100%; max-width: 320px; padding: 10px 12px;
-    background: var(--panel); color: var(--text);
-    border: 1px solid var(--border); border-radius: 8px;
+
+.small {
+    color: var(--muted);
     font-size: 13px;
 }
-.search-box:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
-.search-count { color: var(--muted); font-size: 12px; margin: 8px 0; }
-.priority { margin-bottom: 16px; }
-.priority:last-child { margin-bottom: 0; }
-.priority-title { display: flex; justify-content: space-between; gap: 10px; font-size: 12px; margin-bottom: 7px; }
-.priority-title span:last-child { color: var(--muted); }
-.progress { height: 6px; border-radius: 10px; background: #26334b; overflow: hidden; }
-.progress div { height: 100%; border-radius: 10px; background: var(--accent); }
-.notice {
-    margin-top: 22px; padding: 17px; border: 1px solid #59482b;
-    background: #211d17; border-radius: 10px; color: #e8d4a8; font-size: 13px;
-}
-.notice strong { display: block; margin-bottom: 4px; }
-footer { color: #72829f; font-size: 11px; text-align: center; padding: 28px 0 5px; }
-.no-results { display: none; color: var(--muted); padding: 20px 0; font-size: 13px; }
 
-@media (max-width: 1100px) {
-    .stats { grid-template-columns: repeat(2, minmax(0,1fr)); }
-    .findings { grid-template-columns: 1fr; }
+.tag {
+    display: inline-block;
+    border-radius: 6px;
+    padding: 4px 9px;
+    margin-bottom: 12px;
+    font-size: 12px;
+    font-weight: bold;
 }
-@media (max-width: 700px) {
-    .layout { display: block; }
-    .sidebar { width: 100%; padding: 18px; border-right: none; border-bottom: 1px solid var(--border); }
-    .subtitle { margin-bottom: 15px; }
-    .nav-label, .sidebar-note { display: none; }
-    .sidebar nav { display: flex; flex-wrap: wrap; gap: 5px; }
-    .nav-item { margin: 0; padding: 8px 10px; }
-    main { padding: 20px 15px; }
-    .topbar { align-items: flex-start; flex-direction: column; }
-    .hero { padding: 21px; }
-    .stats { gap: 10px; }
-    .card { padding: 15px; }
-    .card-number { font-size: 25px; }
+
+.medium {
+    color: var(--yellow);
+    background: #403419;
 }
-@media (max-width: 380px) {
-    .stats { grid-template-columns: 1fr; }
-    .finding { flex-direction: column; }
+
+.low {
+    color: var(--green);
+    background: #163b34;
+}
+
+.pending {
+    color: #c4b5fd;
+    background: #30264b;
+}
+
+ul {
+    padding-left: 20px;
+    color: var(--muted);
+}
+
+li {
+    margin: 7px 0;
+}
+
+.search {
+    width: 100%;
+    padding: 13px 15px;
+    border: 1px solid var(--border);
+    background: var(--panel);
+    color: white;
+    border-radius: 9px;
+    margin: 5px 0 18px;
+    font-size: 15px;
+}
+
+.search:focus {
+    outline: 2px solid var(--accent);
+}
+
+.finding {
+    margin-bottom: 16px;
+}
+
+.finding h3 {
+    margin-top: 3px;
+}
+
+.finding p {
+    margin-bottom: 9px;
+}
+
+.evidence-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.evidence-card {
+    overflow: hidden;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 13px;
+}
+
+.evidence-card img {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-height: 100px;
+    object-fit: contain;
+    background: #080d17;
+}
+
+.evidence-content {
+    padding: 17px;
+}
+
+.evidence-content p {
+    overflow-wrap: anywhere;
+    font-size: 13px;
+}
+
+.chart-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+}
+
+.chart-row {
+    margin: 22px 0;
+}
+
+.chart-label {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.track {
+    height: 13px;
+    background: #263449;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.bar {
+    height: 100%;
+    border-radius: 20px;
+}
+
+.bar.medium-bar {
+    width: 25%;
+    background: var(--yellow);
+}
+
+.bar.low-bar {
+    width: 25%;
+    background: var(--green);
+}
+
+.bar.pending-bar {
+    width: 25%;
+    background: #a78bfa;
+}
+
+.bar.monitoring-bar {
+    width: 25%;
+    background: var(--accent);
+}
+
+.notice {
+    border-left: 3px solid var(--yellow);
+    padding: 15px 17px;
+    background: #211e16;
+    border-radius: 7px;
+    margin-top: 17px;
+}
+
+.notice p {
+    margin: 0;
+}
+
+.status-box {
+    background: #102b29;
+    border: 1px solid #20554b;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.status-box strong {
+    color: var(--green);
+}
+
+footer {
+    border-top: 1px solid var(--border);
+    padding: 25px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+@media (max-width: 800px) {
+    .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .evidence-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 520px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        padding: 24px;
+    }
+
+    main {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .header-inner {
+        align-items: flex-start;
+    }
 }
 </style>
 </head>
 
 <body>
-<div class="layout">
 
-<aside class="sidebar">
-    <div class="brand">Secure<span>Corp</span></div>
-    <div class="subtitle">Security Assessment Platform</div>
+<header>
+    <div class="header-inner">
+        <div class="brand">Secure<span>Corp</span> Security</div>
+        <span class="badge">EDUCATIONAL LAB ASSESSMENT</span>
+    </div>
 
-    <div class="nav-label">WORKSPACE</div>
-    <nav>
-        <a class="nav-item active" href="#overview">▦ &nbsp; Overview</a>
-        <a class="nav-item" href="#findings">⌕ &nbsp; Findings</a>
-        <a class="nav-item" href="#environment">▣ &nbsp; Lab Environment</a>
-        <a class="nav-item" href="#remediation">✓ &nbsp; Remediation</a>
-        <a class="nav-item" href="#evidence">▤ &nbsp; Evidence</a>
+    <nav aria-label="Main navigation">
+        <a href="#overview">Overview</a>
+        <a href="#findings">Findings</a>
+        <a href="#risk-chart">Risk Chart</a>
+        <a href="#evidence">Evidence Gallery</a>
+        <a href="#environment">Lab Environment</a>
+        <a href="#remediation">Remediation</a>
+        <a href="#status">Project Status</a>
     </nav>
-
-    <div class="sidebar-note">
-        <strong>● Lab Mode</strong>
-        Educational security assessment in an isolated VirtualBox network.
-    </div>
-</aside>
-
-<main>
-<header class="topbar" id="overview">
-    <div>
-        <div class="eyebrow">Security Operations / Overview</div>
-        <h1>Assessment Dashboard</h1>
-        <p class="description">SecureCorp infrastructure security review and assessment summary.</p>
-    </div>
-    <div class="status">● Report Documented</div>
 </header>
 
-<section class="hero">
-    <div class="eyebrow">SECURITY ASSESSMENT · 2026</div>
-    <h2>Understand risks. Strengthen security.</h2>
-    <p>A documented review covering service discovery, HTTP security observations, WebDAV exposure, authentication logs, and centralized logging investigation.</p>
-    <div class="hero-tags">
-        <span class="tag">Network Reconnaissance</span>
-        <span class="tag">Web Security</span>
-        <span class="tag">Blue Team Monitoring</span>
-        <span class="tag">Risk Assessment</span>
+<main>
+
+<section class="hero" id="overview">
+    <div class="eyebrow">Cybersecurity Capstone Project</div>
+
+    <h1>SecureCorp Security Assessment</h1>
+
+    <p>
+        A documented security assessment conducted in an isolated
+        VirtualBox lab using Kali Linux and Metasploitable2.
+        The project covers network reconnaissance, HTTP security
+        observations, WebDAV investigation and authentication-log review.
+    </p>
+
+    <div class="actions">
+        <a class="button primary"
+           href="../Week-4-Final-Report/FINAL-REPORT.md"
+           download="SecureCorp-Final-Report.md">
+            Download Final Report
+        </a>
+
+        <a class="button" href="#findings">Explore Findings</a>
+
+        <a class="button" href="#evidence">View Evidence</a>
     </div>
 </section>
 
-<div class="section-heading">
-    <h2>Assessment Overview</h2>
-    <span>Documented project summary</span>
-</div>
+<section class="section">
+    <h2>Assessment at a Glance</h2>
 
-<section class="stats">
-    <article class="card">
-        <div class="card-label">Lab Systems</div>
-        <div class="card-number blue">02</div>
-        <div class="card-foot">Kali Linux + Metasploitable2</div>
-    </article>
-    <article class="card">
-        <div class="card-label">Review Areas</div>
-        <div class="card-number green">04</div>
-        <div class="card-foot">Network, web, logs, remediation</div>
-    </article>
-    <article class="card">
-        <div class="card-label">Documented Findings</div>
-        <div class="card-number orange">04</div>
-        <div class="card-foot">Preliminary observations</div>
-    </article>
-    <article class="card">
-        <div class="card-label">Validation</div>
-        <div class="card-number">Open</div>
-        <div class="card-foot">Some technical checks remain pending</div>
-    </article>
+    <div class="grid">
+        <article class="card">
+            <p>Documented Findings</p>
+            <div class="stat">04</div>
+            <p class="small">Initial assessment observations</p>
+        </article>
+
+        <article class="card">
+            <p>Lab Systems</p>
+            <div class="stat">02</div>
+            <p class="small">Kali Linux and Metasploitable2</p>
+        </article>
+
+        <article class="card">
+            <p>Evidence Screenshots</p>
+            <div class="stat">03</div>
+            <p class="small">Nmap, HTTP headers and WebDAV</p>
+        </article>
+    </div>
 </section>
 
-<div class="section-heading" id="findings">
+<section class="section" id="findings">
     <h2>Security Findings</h2>
-    <span>Preliminary risk classifications</span>
-    <input class="search-box" type="search" id="findingSearch" placeholder="Search findings..." aria-label="Search security findings">
-</div>
-<p class="search-count" id="searchCount" aria-live="polite">Showing all 4 findings</p>
 
-<section class="findings" id="findingsList">
-    <article class="card">
-        <div class="finding">
-            <div>
-                <h3>Legacy Software Version Disclosure</h3>
-                <p>Older Apache and PHP versions were identified in HTTP evidence. Patch status requires validation.</p>
-            </div>
-            <span class="badge medium">MEDIUM*</span>
-        </div>
-        <div class="finding">
-            <div>
-                <h3>HTTP Server Information Disclosure</h3>
-                <p>Server response headers disclose implementation details.</p>
-            </div>
-            <span class="badge low">LOW*</span>
-        </div>
-        <div class="finding">
-            <div>
-                <h3>WebDAV Exposure Review</h3>
-                <p>WebDAV methods and responses were inspected. Write access and impact require verification.</p>
-            </div>
-            <span class="badge pending">VALIDATION</span>
-        </div>
-        <div class="finding">
-            <div>
-                <h3>Centralized Log Forwarding</h3>
-                <p>Remote syslog delivery and storage were not confirmed.</p>
-            </div>
-            <span class="badge pending">PENDING</span>
-        </div>
-        <p class="no-results" id="noResults">No matching findings. Try another keyword.</p>
-    </article>
+    <p>
+        Search the documented observations below.
+        Findings are preliminary and do not automatically establish exploitability.
+    </p>
 
-    <article class="card" id="environment">
-        <h2 style="font-size:16px; margin-bottom:12px;">Lab Environment</h2>
-        <div class="info-row"><span>Attacker VM</span><span>Kali Linux</span></div>
-        <div class="info-row"><span>Kali IP</span><span>10.10.10.5</span></div>
-        <div class="info-row"><span>Target VM</span><span>Metasploitable2</span></div>
-        <div class="info-row"><span>Target IP</span><span>10.10.10.10</span></div>
-        <div class="info-row"><span>Network</span><span>VirtualBox Internal</span></div>
-        <div class="info-row"><span>Scope</span><span>Educational lab only</span></div>
-    </article>
+    <input
+        class="search"
+        id="findingSearch"
+        type="search"
+        placeholder="Search findings, services or recommendations..."
+        aria-label="Search security findings"
+    >
+
+    <p id="searchStatus" class="small" aria-live="polite">
+        Showing all 4 findings.
+    </p>
+
+    <div id="findingList">
+
+        <article class="card finding">
+            <span class="tag medium">Medium · Preliminary</span>
+            <h3>01. Legacy Service and Software Versions</h3>
+
+            <p>
+                The target HTTP response identified Apache 2.2.8
+                and PHP 5.2.4.
+            </p>
+
+            <p><strong>Potential risk:</strong>
+                Unsupported or unpatched software may expose known weaknesses.
+            </p>
+
+            <p><strong>Recommended action:</strong>
+                Upgrade unsupported software, apply security updates and
+                disable unnecessary services.
+            </p>
+
+            <p class="small">
+                Evidence:
+                Week-2-Red-Team/evidence/http-headers.txt
+            </p>
+        </article>
+
+        <article class="card finding">
+            <span class="tag low">Low · Preliminary</span>
+            <h3>02. HTTP Server Information Disclosure</h3>
+
+            <p>
+                HTTP response headers exposed server and PHP version information.
+            </p>
+
+            <p><strong>Potential risk:</strong>
+                Version disclosure can help an attacker identify software
+                for further investigation. It does not prove exploitability.
+            </p>
+
+            <p><strong>Recommended action:</strong>
+                Minimize unnecessary version disclosure and review HTTP headers.
+            </p>
+
+            <p class="small">
+                Evidence:
+                Week-2-Red-Team/evidence/http-headers.txt
+            </p>
+        </article>
+
+        <article class="card finding">
+            <span class="tag pending">Validation Required</span>
+            <h3>03. WebDAV Service Exposure</h3>
+
+            <p>
+                WebDAV-related HTTP capabilities were investigated during
+                reconnaissance.
+            </p>
+
+            <p><strong>Potential risk:</strong>
+                Insecure permissions or unnecessary write access could permit
+                unauthorized file operations.
+            </p>
+
+            <p><strong>Recommended action:</strong>
+                Verify permissions, restrict access and disable WebDAV
+                or unnecessary write methods if not required.
+            </p>
+
+            <p class="small">
+                Evidence:
+                Week-2-Red-Team/evidence/webdav-options.txt
+            </p>
+        </article>
+
+        <article class="card finding">
+            <span class="tag pending">Monitoring Gap</span>
+            <h3>04. Centralized Syslog Forwarding</h3>
+
+            <p>
+                Local target logging was observed, but successful delivery
+                and storage of remote syslog messages on Kali could not
+                be confirmed.
+            </p>
+
+            <p><strong>Potential risk:</strong>
+                Unverified centralized logging can make cross-system
+                investigation more difficult.
+            </p>
+
+            <p><strong>Recommended action:</strong>
+                Verify log delivery, storage, retention and monitoring.
+            </p>
+
+            <p class="small">
+                Evidence:
+                Week-3-Blue-Team/evidence/kali-auth-monitoring.txt
+            </p>
+        </article>
+
+    </div>
+
+    <p id="noResults" hidden>No matching findings found. Try another search.</p>
 </section>
 
-<div class="section-heading" id="remediation">
-    <h2>Recommended Priorities</h2>
-    <span>Suggested remediation order</span>
-</div>
+<section class="section" id="risk-chart">
+    <h2>Finding Distribution</h2>
 
-<section class="card">
-    <div class="priority">
-        <div class="priority-title"><span>01 · Review and update legacy software</span><span>High priority</span></div>
-        <div class="progress"><div style="width:90%"></div></div>
-    </div>
-    <div class="priority">
-        <div class="priority-title"><span>02 · Verify WebDAV permissions and access</span><span>High priority</span></div>
-        <div class="progress"><div style="width:80%"></div></div>
-    </div>
-    <div class="priority">
-        <div class="priority-title"><span>03 · Confirm centralized logging delivery</span><span>Medium priority</span></div>
-        <div class="progress"><div style="width:65%"></div></div>
-    </div>
-    <div class="priority">
-        <div class="priority-title"><span>04 · Reduce unnecessary server disclosure</span><span>Medium priority</span></div>
-        <div class="progress"><div style="width:45%"></div></div>
+    <p>
+        This chart represents the four documented finding categories.
+        It is a count of findings, not a calculated risk score.
+    </p>
+
+    <div class="chart-card">
+
+        <div class="chart-row">
+            <div class="chart-label">
+                <span>Medium · Preliminary</span>
+                <strong>1 finding</strong>
+            </div>
+            <div class="track">
+                <div class="bar medium-bar"></div>
+            </div>
+        </div>
+
+        <div class="chart-row">
+            <div class="chart-label">
+                <span>Low · Preliminary</span>
+                <strong>1 finding</strong>
+            </div>
+            <div class="track">
+                <div class="bar low-bar"></div>
+            </div>
+        </div>
+
+        <div class="chart-row">
+            <div class="chart-label">
+                <span>Validation Required</span>
+                <strong>1 finding</strong>
+            </div>
+            <div class="track">
+                <div class="bar pending-bar"></div>
+            </div>
+        </div>
+
+        <div class="chart-row">
+            <div class="chart-label">
+                <span>Monitoring Gap</span>
+                <strong>1 finding</strong>
+            </div>
+            <div class="track">
+                <div class="bar monitoring-bar"></div>
+            </div>
+        </div>
+
+        <div class="notice">
+            <p>
+                <strong>Assessment note:</strong>
+                These classifications are preliminary. Further validation
+                is required before treating findings as confirmed exploitable
+                vulnerabilities.
+            </p>
+        </div>
+
     </div>
 </section>
 
-<div class="section-heading" id="evidence">
-    <h2>Evidence &amp; Documentation</h2>
-    <span>Repository records</span>
-</div>
+<section class="section" id="evidence">
+    <h2>Evidence Gallery</h2>
 
-<section class="findings">
-    <article class="card">
-        <h2 style="font-size:16px; margin-bottom:10px;">Evidence Categories</h2>
-        <div class="info-row"><span>Week 1</span><span>Lab setup and reconnaissance</span></div>
-        <div class="info-row"><span>Week 2</span><span>Service and HTTP evidence</span></div>
-        <div class="info-row"><span>Week 3</span><span>Authentication log review</span></div>
-        <div class="info-row"><span>Week 4</span><span>Final assessment report</span></div>
-    </article>
-    <article class="card">
-        <h2 style="font-size:16px; margin-bottom:10px;">Project Status</h2>
-        <p style="color:var(--muted); font-size:13px;">Documentation and evidence references are organized in the project repository. Findings are preliminary, and additional validation and remediation verification are recommended.</p>
-        <div style="margin-top:15px;"><span class="badge pending">ASSESSMENT IN PROGRESS</span></div>
-    </article>
+    <p>
+        Screenshots collected during the lab assessment.
+        Select a screenshot to open the original image.
+    </p>
+
+    <div class="evidence-grid">
+
+        <article class="evidence-card">
+            <a
+                href="../Week-2-Red-Team/evidence/E02-nmap-service-scan.png"
+                target="_blank"
+                rel="noopener"
+            >
+                <img
+                    src="../Week-2-Red-Team/evidence/E02-nmap-service-scan.png"
+                    alt="Nmap service scan evidence"
+                    loading="lazy"
+                >
+            </a>
+
+            <div class="evidence-content">
+                <h3>E02 · Nmap Service Scan</h3>
+                <p>
+                    Screenshot documenting network service discovery
+                    in the isolated lab.
+                </p>
+                <a
+                    href="../Week-2-Red-Team/evidence/metasploitable-service-scan.txt"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    View scan text
+                </a>
+            </div>
+        </article>
+
+        <article class="evidence-card">
+            <a
+                href="../Week-2-Red-Team/evidence/E05-http-headers.png"
+                target="_blank"
+                rel="noopener"
+            >
+                <img
+                    src="../Week-2-Red-Team/evidence/E05-http-headers.png"
+                    alt="HTTP response headers evidence"
+                    loading="lazy"
+                >
+            </a>
+
+            <div class="evidence-content">
+                <h3>E05 · HTTP Security Headers</h3>
+                <p>
+                    Screenshot documenting observed HTTP response information.
+                </p>
+                <a
+                    href="../Week-2-Red-Team/evidence/http-headers.txt"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    View headers text
+                </a>
+            </div>
+        </article>
+
+        <article class="evidence-card">
+            <a
+                href="../Week-2-Red-Team/evidence/E06-webdav-options.png"
+                target="_blank"
+                rel="noopener"
+            >
+                <img
+                    src="../Week-2-Red-Team/evidence/E06-webdav-options.png"
+                    alt="WebDAV OPTIONS response evidence"
+                    loading="lazy"
+                >
+            </a>
+
+            <div class="evidence-content">
+                <h3>E06 · WebDAV OPTIONS</h3>
+                <p>
+                    Screenshot documenting the WebDAV-related HTTP
+                    capability investigation.
+                </p>
+                <a
+                    href="../Week-2-Red-Team/evidence/webdav-options.txt"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    View OPTIONS output
+                </a>
+            </div>
+        </article>
+
+        <article class="evidence-card">
+            <div class="evidence-content">
+                <h3>Blue Team · Authentication Logs</h3>
+                <p>
+                    Text evidence collected during Kali Linux
+                    authentication-log review.
+                </p>
+
+                <a
+                    class="button"
+                    href="../Week-3-Blue-Team/evidence/kali-auth-monitoring.txt"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    Open monitoring evidence
+                </a>
+            </div>
+        </article>
+
+    </div>
 </section>
 
-<div class="notice">
-    <strong>⚠ Assessment Limitation</strong>
-    This dashboard summarizes a controlled educational lab. It is not proof of a successful exploit or a complete penetration test. Technical validation items remain open as documented in the final report.
-</div>
+<section class="section" id="environment">
+    <h2>Lab Environment</h2>
 
-<footer>SecureCorp Security Assessment · Educational Lab Project · 2026</footer>
+    <div class="grid">
+        <article class="card">
+            <h3>Kali Linux</h3>
+            <p>Assessment and monitoring system</p>
+            <div class="stat">10.10.10.5</div>
+            <p class="small">Attacker / assessment VM</p>
+        </article>
+
+        <article class="card">
+            <h3>Metasploitable2</h3>
+            <p>Intentionally vulnerable lab target</p>
+            <div class="stat">10.10.10.10</div>
+            <p class="small">Target VM</p>
+        </article>
+
+        <article class="card">
+            <h3>VirtualBox</h3>
+            <p>Isolated educational environment</p>
+            <div class="stat">Lab</div>
+            <p class="small">Testing restricted to designated systems</p>
+        </article>
+    </div>
+</section>
+
+<section class="section" id="remediation">
+    <h2>Remediation Priorities</h2>
+
+    <div class="card">
+        <ul>
+            <li>Upgrade unsupported software and apply security updates.</li>
+            <li>Review exposed services and disable unnecessary services.</li>
+            <li>Verify WebDAV permissions and restrict access.</li>
+            <li>Validate centralized log forwarding and message storage.</li>
+            <li>Establish regular log review and evidence-retention procedures.</li>
+        </ul>
+    </div>
+</section>
+
+<section class="section" id="status">
+    <h2>Project Status</h2>
+
+    <div class="status-box">
+        <strong>Initial Assessment Documented</strong>
+
+        <p style="margin-top: 10px;">
+            Evidence and preliminary findings have been documented.
+            Further validation and remediation verification are recommended.
+        </p>
+    </div>
+
+    <div class="notice">
+        <p>
+            <strong>Limitations:</strong>
+            This project is an educational lab assessment, not a complete
+            penetration test. Remote syslog forwarding remains unverified.
+            No claim is made that every vulnerability has been identified
+            or that all observations are exploitable.
+        </p>
+    </div>
+
+    <div class="actions">
+        <a
+            class="button primary"
+            href="../Week-4-Final-Report/FINAL-REPORT.md"
+            download="SecureCorp-Final-Report.md"
+        >
+            Download Final Report
+        </a>
+
+        <a class="button" href="#overview">Back to Top ↑</a>
+    </div>
+</section>
+
 </main>
-</div>
+
+<footer>
+    SecureCorp Security Assessment · Educational Virtual Lab Project
+</footer>
 
 <script>
-const navLinks = document.querySelectorAll('.nav-item');
+const searchInput = document.getElementById("findingSearch");
+const findings = Array.from(document.querySelectorAll(".finding"));
+const searchStatus = document.getElementById("searchStatus");
+const noResults = document.getElementById("noResults");
 
-navLinks.forEach(link => {
-    link.addEventListener('click', function () {
-        navLinks.forEach(item => item.classList.remove('active'));
-        this.classList.add('active');
-    });
-});
-
-const searchInput = document.getElementById('findingSearch');
-const findingCards = document.querySelectorAll('#findingsList > article:first-child .finding');
-const searchCount = document.getElementById('searchCount');
-const noResults = document.getElementById('noResults');
-
-searchInput.addEventListener('input', function () {
+searchInput.addEventListener("input", function () {
     const query = this.value.trim().toLowerCase();
-    let visible = 0;
+    let visibleCount = 0;
 
-    findingCards.forEach(finding => {
+    findings.forEach(function (finding) {
         const matches = finding.textContent.toLowerCase().includes(query);
-        finding.style.display = matches ? 'flex' : 'none';
-        if (matches) visible++;
+
+        finding.hidden = !matches;
+
+        if (matches) {
+            visibleCount++;
+        }
     });
 
-    searchCount.textContent = `Showing ${visible} of ${findingCards.length} findings`;
-    noResults.style.display = visible === 0 ? 'block' : 'none';
+    searchStatus.textContent =
+        "Showing " + visibleCount + " of " + findings.length + " findings.";
+
+    noResults.hidden = visibleCount !== 0;
 });
 </script>
+
 </body>
 </html>
