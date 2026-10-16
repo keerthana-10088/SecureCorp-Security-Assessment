@@ -80,7 +80,14 @@ The assessment followed these stages:
 
 **Severity:** Requires further verification.
 
-**Evidence:** Review the WebDAV evidence files in `Week-2-Red-Team/evidence/`.
+**Evidence:** **Evidence:**
+- `Week-2-Red-Team/evidence/webdav-options.txt`
+- `Week-2-Red-Team/evidence/webdav-propfind.txt`
+- `Week-2-Red-Team/evidence/webdav-directory.html`
+- `Week-2-Red-Team/evidence/webdav-get-headers.txt`
+- `Week-2-Red-Team/evidence/E06-webdav-options.png`
+
+
 
 **Recommendation:**
 - Disable WebDAV if it is not required.
