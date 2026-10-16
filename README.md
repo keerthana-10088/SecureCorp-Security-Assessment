@@ -1,55 +1,76 @@
 # SecureCorp Security Assessment
 
 ## Project Overview
-This project documents a controlled security assessment in an isolated VirtualBox lab. It covers lab setup, service discovery, risk assessment, security monitoring, and reporting.
+This project documents a controlled cybersecurity assessment conducted in an isolated VirtualBox lab. It covers asset identification, network reconnaissance, preliminary risk assessment, security monitoring, and remediation recommendations.
 
 ## Objectives
-- Identify assets and exposed network services.
-- Assess preliminary security risks.
+- Identify lab assets and exposed network services.
+- Review service information and potential security risks.
 - Practice authorized security testing in an isolated environment.
-- Plan centralized security logging and monitoring.
-- Document findings and remediation recommendations.
+- Document Blue Team monitoring activities.
+- Assess the status of centralized logging.
+- Provide practical remediation recommendations.
 
 ## Lab Environment
 
 | System | Role | IP Address |
 |---|---|---|
-| Kali Linux | Security testing machine | 10.10.10.5 |
-| Metasploitable2 | Vulnerable lab target | 10.10.10.10 |
-| Ubuntu/Wazuh | Planned monitoring machine | 10.10.10.20 |
+| Kali Linux | Security testing and monitoring | 10.10.10.5 |
+| Metasploitable2 | Authorized lab target | 10.10.10.10 |
+| Ubuntu/Wazuh | Planned monitoring environment | 10.10.10.20 |
+
+**Note:** Ubuntu/Wazuh is a planned component; its deployment and integration are not confirmed.
 
 ## Project Progress
 
 ### Week 1 – Lab Setup and Risk Assessment
-- Initial Nmap service/version scan completed.
-- Asset inventory documented.
+- Lab asset inventory documented.
+- Initial Nmap service scan recorded.
 - CIA analysis and preliminary risk assessment documented.
-- Logging and monitoring plan documented.
+- Logging and monitoring plan prepared.
 
 ### Week 2 – Authorized Security Testing
-- Application and service map created.
-- Reconnaissance notes documented.
-- Testing log and evidence index created.
-- Further testing remains pending.
+- Application and service reconnaissance documented.
+- HTTP response headers reviewed.
+- WebDAV-related responses investigated.
+- Testing notes, evidence index, and screenshots collected.
+- Findings require interpretation within the documented testing scope.
 
-### Week 3 – Blue-Team Investigation
-Pending.
+### Week 3 – Blue Team Monitoring
+- Kali authentication-log review documented.
+- Monitoring evidence collected and indexed.
+- Centralized remote syslog forwarding remains unverified.
 
-### Week 4 – Reporting and Recommendations
-Pending.
+### Week 4 – Final Report
+- Final security assessment report prepared.
+- Preliminary findings, limitations, and remediation recommendations documented.
+- Findings should be interpreted alongside the supporting evidence.
 
-## Important Limitations
-Detected services and software versions do not independently confirm exploitable vulnerabilities. Findings will be updated only when supported by actual test evidence.
+## Preliminary Observations
+- HTTP response headers disclose server and software version information.
+- WebDAV-related behavior was investigated and requires careful configuration review.
+- Centralized logging from Metasploitable2 to Kali has not been confirmed.
 
-## Safety and Scope
-All testing is restricted to the authorized, isolated lab environment. Public, campus, home, and third-party systems are out of scope.
+These observations do not, by themselves, prove that a service is exploitable.
 
-## Tools
+## Recommended Remediation
+- Upgrade unsupported operating systems and outdated software.
+- Disable unnecessary services and restrict administrative interfaces.
+- Review WebDAV configuration and disable it if not required.
+- Configure centralized logging and verify that remote events arrive successfully.
+- Retain evidence and retest changes in the authorized lab.
+
+## Tools and Technologies
 - Kali Linux
 - Nmap
 - VirtualBox
 - Metasploitable2
-- Wazuh (planned)
+- Apache HTTP server inspection tools
+- Linux authentication logs
+- Wazuh (planned; deployment not confirmed)
+
+## Safety and Scope
+All testing is restricted to the authorized, isolated VirtualBox lab. No public, campus, or third-party systems are within scope.
 
 ## Disclaimer
-This project is for authorized cybersecurity learning and lab-based assessment only.
+This project is for authorized cybersecurity education and lab-based security assessment only.
