@@ -1,0 +1,30 @@
+2026-10-16T15:59:20.441025-04:00 kali sudo: pam_unix(sudo:session): session opened for user root(uid=0) by kali(uid=1000)
+2026-10-16T15:59:20.485442-04:00 kali sudo: pam_unix(sudo:session): session closed for user root
+2026-10-16T15:59:47.321433-04:00 kali sudo:     kali : TTY=pts/0 ; PWD=/home/kali ; USER=root ; COMMAND=/usr/bin/tcpdump -ni eth1 -c 3 'host 10.10.10.10'
+2026-10-16T15:59:47.322647-04:00 kali sudo: pam_unix(sudo:session): session opened for user root(uid=0) by kali(uid=1000)
+2026-10-16T16:02:03.128381-04:00 kali sudo: pam_unix(sudo:session): session closed for user root
+2026-10-16T16:04:26.259845-04:00 kali sudo:     kali : TTY=pts/0 ; PWD=/home/kali ; USER=root ; COMMAND=/usr/bin/timeout 10 tcpdump -ni eth1 -c 3 udp port 514
+2026-10-16T16:04:26.263922-04:00 kali sudo: pam_unix(sudo:session): session opened for user root(uid=0) by kali(uid=1000)
+2026-10-16T16:04:36.296787-04:00 kali sudo: pam_unix(sudo:session): session closed for user root
+2026-10-16T16:09:08.446526-04:00 kali sudo:     kali : TTY=pts/0 ; PWD=/home/kali ; USER=root ; COMMAND=/usr/sbin/iptables -L INPUT -n -v
+2026-10-16T16:09:08.446820-04:00 kali sudo: pam_unix(sudo:session): session opened for user root(uid=0) by kali(uid=1000)
+2026-10-16T16:09:08.490872-04:00 kali sudo: pam_unix(sudo:session): session closed for user root
+2026-10-16T16:15:23.084458-04:00 kali sudo:     kali : TTY=pts/0 ; PWD=/home/kali ; USER=root ; COMMAND=/usr/bin/timeout 10 tcpdump -ni eth1 udp port 514
+2026-10-16T16:15:23.084883-04:00 kali sudo: pam_unix(sudo:session): session opened for user root(uid=0) by kali(uid=1000)
+2026-10-16T16:15:33.118166-04:00 kali sudo: pam_unix(sudo:session): session closed for user root
+2026-10-16T16:17:24.412079-04:00 kali sudo:     kali : TTY=pts/0 ; PWD=/home/kali ; USER=root ; COMMAND=/usr/bin/tcpdump -ni eth1 -c 1 'udp and host 10.10.10.10'
+2026-10-16T16:17:24.412422-04:00 kali sudo: pam_unix(sudo:session): session opened for user root(uid=0) by kali(uid=1000)
+2026-10-16T16:18:33.463659-04:00 kali sudo: pam_unix(sudo:session): session closed for user root
+2026-10-16T16:20:06.206589-04:00 kali sudo:     kali : TTY=pts/0 ; PWD=/home/kali ; USER=root ; COMMAND=/usr/bin/timeout 10 tcpdump -ni eth1 -c 3 'udp port 514 and host 10.10.10.10'
+2026-10-16T16:20:06.210172-04:00 kali sudo: pam_unix(sudo:session): session opened for user root(uid=0) by kali(uid=1000)
+2026-10-16T16:20:16.245996-04:00 kali sudo: pam_unix(sudo:session): session closed for user root
+2026-10-16T16:22:00.917460-04:00 kali sudo:     kali : TTY=pts/0 ; PWD=/home/kali ; USER=root ; COMMAND=/usr/bin/tcpdump -ni eth1 -vv -A 'udp port 514 and host 10.10.10.10'
+2026-10-16T16:22:00.917760-04:00 kali sudo: pam_unix(sudo:session): session opened for user root(uid=0) by kali(uid=1000)
+2026-10-16T16:22:43.043920-04:00 kali sudo: pam_unix(sudo:session): session closed for user root
+2026-10-16T16:24:21.514300-04:00 kali sudo:     kali : TTY=pts/0 ; PWD=/home/kali ; USER=root ; COMMAND=/usr/bin/tail -n 30 /var/log/auth.log
+2026-10-16T16:24:21.514624-04:00 kali sudo: pam_unix(sudo:session): session opened for user root(uid=0) by kali(uid=1000)
+2026-10-16T16:24:21.518047-04:00 kali sudo: pam_unix(sudo:session): session closed for user root
+2026-10-16T16:24:47.819103-04:00 kali sudo:     kali : TTY=pts/0 ; PWD=/home/kali ; USER=root ; COMMAND=/usr/bin/grep -Ei 'authentication failure|failed password|invalid user|sudo:' /var/log/auth.log
+2026-10-16T16:24:47.819459-04:00 kali sudo: pam_unix(sudo:session): session opened for user root(uid=0) by kali(uid=1000)
+2026-10-16T16:24:47.828182-04:00 kali sudo: pam_unix(sudo:session): session closed for user root
+2026-10-16T16:27:02.750423-04:00 kali sudo:     kali : TTY=pts/0 ; PWD=/home/kali/SecureCorp-Security-Assessment ; USER=root ; COMMAND=/usr/bin/grep -E sudo:.*COMMAND=|pam_unix\\(sudo:session\\) /var/log/auth.log
