@@ -11,6 +11,7 @@ Track evidence collected during authorized security testing.
 | E04 | Nmap service scan screenshot | E02-nmap-service-scan.png | Available |
 | E05 | HTTP response headers | http-headers.txt; E05-http-headers.png | Available |
 | E06 | WebDAV OPTIONS response and advertised HTTP methods | webdav-options.txt; E06-webdav-options.png | Available |
+| E07 | Port 1524 root-shell prompt observation | E07-port-1524-root-shell.txt | Available |
 
 ## Evidence Rules
 - Record genuine test results only.
@@ -19,4 +20,5 @@ Track evidence collected during authorized security testing.
 - Remove passwords, tokens, and other sensitive information from screenshots before sharing.
 
 ## Current Status
-Initial service scans, HTTP header review, WebDAV reconnaissance, and a limited DVWA login-page review have been documented. Three screenshots (E02, E05, and E06) are available in the evidence folder.
+Initial service scans, HTTP header review, WebDAV reconnaissance, and a limited DVWA login-page review have been documented. Screenshots E02, E05, and E06 are available in the evidence folder. E07 records the observed root-shell prompt on TCP port 1524; no additional commands were executed within that shell.
+
