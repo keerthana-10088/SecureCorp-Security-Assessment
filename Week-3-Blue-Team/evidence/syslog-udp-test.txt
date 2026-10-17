@@ -1,0 +1,18 @@
+SecureCorp Syslog UDP Connectivity Test
+
+Date: 2026-10-17
+Sender: Metasploitable2 (10.10.10.10)
+Receiver: Kali Linux (10.10.10.5)
+Protocol: UDP
+Destination Port: 5514
+Result: SUCCESS — one UDP packet captured by tcpdump.
+Packet Length: 22 bytes
+
+Command used on Kali:
+sudo tcpdump -ni eth1 udp port 5514
+
+Observed packet:
+10.10.10.10.58759 > 10.10.10.5.5514: UDP, length 22
+
+Note: This confirms UDP packet delivery on port 5514.
+It does not confirm standard syslog forwarding on UDP port 514.
