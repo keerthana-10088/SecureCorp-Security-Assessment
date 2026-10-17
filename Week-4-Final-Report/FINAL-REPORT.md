@@ -80,7 +80,7 @@ The assessment followed these stages:
 
 **Severity:** Requires further verification.
 
-**Evidence:** **Evidence:**
+**Evidence:**
 - `Week-2-Red-Team/evidence/webdav-options.txt`
 - `Week-2-Red-Team/evidence/webdav-propfind.txt`
 - `Week-2-Red-Team/evidence/webdav-directory.html`
@@ -150,6 +150,6 @@ Recommended next steps are to validate the findings, remediate confirmed weaknes
 
 ## 10. Assessment Status
 
-**Project:** SecureCorp Security Assessment  
-**Environment:** Isolated VirtualBox lab  
+**Project:** SecureCorp Security Assessment
+**Environment:** Isolated VirtualBox lab
 **Status:** Initial assessment documented; further validation and remediation verification recommended.
