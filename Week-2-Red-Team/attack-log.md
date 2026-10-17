@@ -105,7 +105,8 @@ For future tests, record:
 
 ### Current Limitations
 
-- No successful exploitation or shell access is claimed in this log.
+- A root-shell prompt was observed on TCP port 1524 and recorded in `evidence/E07-port-1524-root-shell.txt`. No additional commands were executed within the shell, so command execution was not independently verified.
+
 - The assessment is limited to the tests and evidence documented here.
 - Old software versions and exposed service methods require further validation before assigning confirmed vulnerability status.
 - Centralized remote syslog delivery has not been verified.
