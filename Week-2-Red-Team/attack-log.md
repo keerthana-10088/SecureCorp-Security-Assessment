@@ -27,6 +27,17 @@
 The initial service scan identified multiple reachable services on the lab target. Additional read-only checks reviewed FTP anonymous access, HTTP response headers, WebDAV responses, the DVWA login page, and selected security logs.
 
 The observations documented below indicate areas that require configuration review. They do not, by themselves, establish that every observed service is exploitable.
+### Port 1524 Root Shell Access Observation
+
+* **Target:** Metasploitable2 (`10.10.10.10`)
+* **Source:** Kali Linux (`10.10.10.5`)
+* **Port:** `1524/tcp`
+* **Service:** Bind shell reported by Nmap
+* **Verification method:** Netcat connection using `nc -nv -w 3 10.10.10.10 1524`
+* **Observed result:** The connection displayed `root@metasploitable:/#`.
+* **Assessment:** The observed prompt indicates that the connection reached a root shell. This is a critical security concern in the isolated lab environment.
+* **Evidence limitation:** The terminal observation has not yet been saved as a separate screenshot or text evidence file. No additional commands were executed within the shell.
+
 
 ### WebDAV Reconnaissance Finding
 
