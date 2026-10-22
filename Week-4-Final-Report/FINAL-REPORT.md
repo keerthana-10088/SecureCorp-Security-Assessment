@@ -110,6 +110,24 @@ The assessment followed these stages:
 - Confirm that messages arrive at the monitoring system.
 - Protect logs against unauthorized modification.
 - Establish log retention and review procedures.
+### Finding 5: Root-Shell Prompt Observed on TCP Port 1524
+
+**Observation:** A Netcat connection to the Metasploitable2 target (`10.10.10.10`) on TCP port `1524` displayed the prompt `root@metasploitable:/#`.
+
+**Assessment:** This observation indicates that the connection reached a root-shell prompt. However, no additional commands were executed, so command execution was not independently verified.
+
+**Potential Impact:** If the service is accessible to an unauthorized user, it could expose the target system to severe compromise.
+
+**Severity:** Critical potential impact; validation and service configuration review required.
+
+**Evidence:** `Week-2-Red-Team/evidence/E07-port-1524-root-shell.txt`
+
+**Recommended Controls:**
+
+* **Technical:** Disable the bind-shell service if it is not required and restrict access to necessary services.
+* **Compensating:** Isolate the vulnerable lab system and restrict network access to trusted lab machines.
+* **Detective:** Monitor for unexpected connections to TCP port 1524 and investigate related network and system logs.
+
 
 ## 5. Blue Team Monitoring
 
