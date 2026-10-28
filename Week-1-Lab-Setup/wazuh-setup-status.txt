@@ -1,0 +1,15 @@
+# Wazuh Setup Status — Week 1
+
+Kali Linux: 10.10.10.5
+Metasploitable2: 10.10.10.10
+Ubuntu-Wazuh: 10.10.10.20
+
+Ubuntu virtual machine setup: Completed
+Internal network configuration: Previously configured; current connectivity needs re-verification
+Internet connectivity: Previously tested successfully
+Wazuh installation: Not verified
+Wazuh service status: Not verified
+Centralized log collection: Pending verification
+Test event ingestion: Pending verification
+
+Note: Wazuh monitoring is not marked complete until installation, service status, and test-log ingestion are verified.

@@ -163,8 +163,17 @@ Recommended next steps are to validate the findings, remediate confirmed weaknes
 
 ## 9. Evidence Index
 
-- Week 2 reconnaissance evidence: `Week-2-Red-Team/evidence/`
-- Week 3 authentication monitoring evidence: `Week-3-Blue-Team/evidence/kali-auth-monitoring.txt`
+- Nmap service scan: `Week-2-Red-Team/metasploitable-scan.txt`
+- HTTP headers and server version: `Week-2-Red-Team/evidence/http-headers.txt`
+- WebDAV OPTIONS review: `Week-2-Red-Team/evidence/webdav-options.txt`
+- WebDAV PROPFIND response: `Week-2-Red-Team/evidence/webdav-propfind.txt`
+- WebDAV directory response: `Week-2-Red-Team/evidence/webdav-directory.html`
+- WebDAV GET headers: `Week-2-Red-Team/evidence/webdav-get-headers.txt`
+- WebDAV screenshot: `Week-2-Red-Team/evidence/E06-webdav-options.png`
+- DVWA login page review: `Week-2-Red-Team/evidence/dvwa-login-review.txt`
+- Port 1524 root-shell prompt observation: `Week-2-Red-Team/evidence/E07-port-1524-root-shell.txt`
+- Blue Team authentication log review: `Week-3-Blue-Team/evidence/kali-auth-monitoring.txt`
+- Syslog UDP test: `Week-3-Blue-Team/evidence/syslog-udp-test.txt`
 
 ## 10. Assessment Status
 
