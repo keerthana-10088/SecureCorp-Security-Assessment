@@ -39,3 +39,14 @@ This assessment used a controlled, isolated lab environment. The collected evide
 
 ## Conclusion
 Week 3 demonstrates basic authentication-log analysis and evidence collection. Remote syslog forwarding requires further troubleshooting before centralized logging can be considered operational.
+## Additional Syslog Connectivity Test
+
+A UDP connectivity test was performed from Metasploitable2 (10.10.10.10) to Kali Linux (10.10.10.5) on port 5514.
+
+Result: One UDP packet was captured successfully using tcpdump.
+
+Limitation: This confirms UDP packet delivery on port 5514 only. Standard syslog forwarding on port 514 and Wazuh centralized log ingestion remain unverified.
+
+## Overall Status
+
+Basic authentication-log review and UDP packet capture are documented. Centralized security monitoring remains pending until the syslog configuration and Wazuh log ingestion are verified.
